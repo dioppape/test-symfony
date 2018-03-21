@@ -12,3 +12,5 @@
 /web/uploads/
 /app/phpunit.xml
 /phpunit.xml
+.idea
+/app/config/parameter.yml
