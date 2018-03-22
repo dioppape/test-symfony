@@ -73,48 +73,59 @@ Parser les données HL7 et les insérer en base:
 
 #### Introduction
 
-Pour la réalisation du test,  j'ai installer le bundles doctrine migrations. 
-La base de données est du PostgreSql.
+Pour la réalisation du test, j'ai installé le bundle doctrine migrations et utilisé la base de données PostgreSql.
 
-Les données HL7 sont récuperer par une commande symfony. Dans l'IHM, on a peut afficher la liste des médecins et celle des patients.
+Les données HL7 sont récupèrées par une commande symfony (voir partie déploiemet). Dans l'IHM, on peut afficher la liste des médecins et celle des patients.
 
-Pour chaque médecin, on peut voir ses patients et pour chaque patient on a la possibilité de voir ses médecins traitant.
+Pour chaque médecin, on peut voir la liste de ses patients et pour chaque patient, on a la possibilité de voir ses médecins traitants.
 
 
-#### Modèle
+#### Modèle de données
 Voici le modèle de données:
 ![alt text](model.png)
 
 Un médecin peut avoir plusieurs patients et un patient plusieurs médecins traitants.
 
-Un patient peut avoir plusieurs adresses.
+Mais aussi un patient peut avoir plusieurs adresses.
 
-#### Récupèrer le projet sur github
+#### Récupèration du projet sur github
 
-Pour récuperer les source, il suffit de faire la commande suivante depuis le repertoire de travaille:
-git clone https://github.com/dioppape/test-symfony.git
+Pour récupèrer les sources, il suffit de faire la commande suivante depuis le repertoire de travail:
+>git clone https://github.com/dioppape/test-symfony.git
 
-#### Configuration du l'application
-Vu que le fichier parameter.yml n'est pas versionné, les paramêtre par defaut sont sur le fichier parameter.yml.dist.
-Il faut configurer les paramêtres de la base de données postgreSql et le dossier `web/files/` contenant les fichiers HL7.
+#### Configuration
+Vu que le fichier parameters.yml n'est pas versionné, les paramêtres par defaut sont dans le fichier parameters.yml.dist.
+Il faut configurer les paramêtres de la base de données PostgreSql et le dossier `web/files/` contenant les fichiers HL7.
+Ici tous les paramêtres par defaut sont correct sauf qu'il faut changer l'adresse ip vers PostgreSQL, le nom de la base de données, le username et le mot des passe de l'utilisateur.
 
-#### Execute du script deploy.sh
-Le script deploy.sh excute les taches suivantes:
-Apès l'installation de l'ensemble des packages avec la commande
+#### Déploiement
+
+Après l'installation de l'ensemble des packages avec la commande
 >composer install
 
-et la réation de la base de données
+et la création de la base de données.
 > php app/console doctrine:database:create
-Lancer le script ./deploy.sh qui se de charge:
-* Création/mise à jour des tablesdes tables avec doctrine migrations
+
+Lancer le script  `./deploy.sh` qui execute derrière les commandes suivantes:
+
+* Création/mise à jour des tables avec doctrine migrations
 > php app/console doctrine:migrations:migrate -n
+
+Permet de créer les tables mais aussi de mêttre à jour les champs de la base de données.
+
 * Vider les données HL7 avec la commande
 >php app/console import:adt --truncate
+
+Sert à vider la base de données
+
 * Importation des données HL7 avec la commande
 >php app/console import:adt --force
 
-#### Demarrage de l'applcation
-url-de-base
+Permet d'importer les nouveaux données des patients et médecins et en même temps de les mettre à jour s'il existe dèjà en base de données.
+
+ 
+#### Démarrage de l'application
+La liste des médecins:
 
 ![alt text](home.png)
 

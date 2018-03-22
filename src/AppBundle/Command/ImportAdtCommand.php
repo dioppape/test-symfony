@@ -48,11 +48,11 @@ class ImportAdtCommand extends ContainerAwareCommand
     {
         $this
             ->setName('import:adt')
-            ->setDescription('Import des informations administrative du patient et des données des medecins.')
+            ->setDescription('Import des informations administratives du patient et des données des medecins.')
 
             ->setHelp(
                 <<<'EOT'
-Import des informations administrative du patient et des données des medecins et met a jour/ajoute la base de donnees
+Import des informations administratives du patient et des données des medecins et met a jour/ajoute la base de donnees
 EOT
             )
             ->addOption(
@@ -82,7 +82,7 @@ EOT
         $this->force = $input->getOption('force') ? true : false;
 
         $this->style->title(sprintf(
-            'Import Import des informations administrative du patient et des données des medecins.'
+            'Import des informations administratives du patient et des données des medecins.'
         ));
 
         $this->fileSystem = new Filesystem();
