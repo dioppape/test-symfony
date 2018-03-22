@@ -69,3 +69,54 @@ Parser les données HL7 et les insérer en base:
 * Modifier ce readme dans votre repo pour expliquer votre projet.
 * Envoyer le lien github/gitlab de votre projet afin que l'on puisse regarder votre code.
 
+## Explication du test
+
+#### Introduction
+
+Pour la réalisation du test,  j'ai installer le bundles doctrine migrations. 
+La base de données est du PostgreSql.
+
+Les données HL7 sont récuperer par une commande symfony. Dans l'IHM, on a peut afficher la liste des médecins et celle des patients.
+
+Pour chaque médecin, on peut voir ses patients et pour chaque patient on a la possibilité de voir ses médecins traitant.
+
+
+#### Modèle
+Voici le modèle de données:
+![alt text](model.png)
+
+Un médecin peut avoir plusieurs patients et un patient plusieurs médecins traitants.
+
+Un patient peut avoir plusieurs adresses.
+
+#### Récupèrer le projet sur github
+
+Pour récuperer les source, il suffit de faire la commande suivante depuis le repertoire de travaille:
+git clone https://github.com/dioppape/test-symfony.git
+
+#### Configuration du l'application
+Vu que le fichier parameter.yml n'est pas versionné, les paramêtre par defaut sont sur le fichier parameter.yml.dist.
+Il faut configurer les paramêtres de la base de données postgreSql et le dossier `web/files/` contenant les fichiers HL7.
+
+#### Execute du script deploy.sh
+Le script deploy.sh excute les taches suivantes:
+Apès l'installation de l'ensemble des packages avec la commande
+>composer install
+
+et la réation de la base de données
+> php app/console doctrine:database:create
+Lancer le script ./deploy.sh qui se de charge:
+* Création/mise à jour des tablesdes tables avec doctrine migrations
+> php app/console doctrine:migrations:migrate -n
+* Vider les données HL7 avec la commande
+>php app/console import:adt --truncate
+* Importation des données HL7 avec la commande
+>php app/console import:adt --force
+
+#### Demarrage de l'applcation
+url-de-base
+
+![alt text](home.png)
+
+
+

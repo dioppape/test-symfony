@@ -13,4 +13,4 @@
 /app/phpunit.xml
 /phpunit.xml
 .idea
-/app/config/parameter.yml
+/app/config/parameters.yml

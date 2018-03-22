@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>DATABASE</ID>
+  <OriginalElement>78d7f72c-2319-44fb-9c9a-f969dacf33f2.schema:test_symfony.public</OriginalElement>
+  <nodes>
+    <node x="168.0" y="0.0">78d7f72c-2319-44fb-9c9a-f969dacf33f2.table:test_symfony.public.patient</node>
+    <node x="-88.0" y="20.0">78d7f72c-2319-44fb-9c9a-f969dacf33f2.table:test_symfony.public.medecin</node>
+    <node x="224.75" y="226.0">78d7f72c-2319-44fb-9c9a-f969dacf33f2.table:test_symfony.public.adresse</node>
+    <node x="-35.25" y="262.5">78d7f72c-2319-44fb-9c9a-f969dacf33f2.table:test_symfony.public.medecin_patient</node>
+    <node x="-40.0" y="391.0">78d7f72c-2319-44fb-9c9a-f969dacf33f2.table:test_symfony.public.migration_versions</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="78d7f72c-2319-44fb-9c9a-f969dacf33f2.table:test_symfony.public.adresse" target="78d7f72c-2319-44fb-9c9a-f969dacf33f2.table:test_symfony.public.patient">
+      <point x="0.0" y="-76.0" />
+      <point x="46.75" y="88.0" />
+    </edge>
+    <edge source="78d7f72c-2319-44fb-9c9a-f969dacf33f2.table:test_symfony.public.medecin_patient" target="78d7f72c-2319-44fb-9c9a-f969dacf33f2.table:test_symfony.public.patient">
+      <point x="43.75" y="-39.5" />
+      <point x="161.0" y="201.0" />
+      <point x="214.75" y="201.0" />
+      <point x="-46.75" y="88.0" />
+    </edge>
+    <edge source="78d7f72c-2319-44fb-9c9a-f969dacf33f2.table:test_symfony.public.medecin_patient" target="78d7f72c-2319-44fb-9c9a-f969dacf33f2.table:test_symfony.public.medecin">
+      <point x="-43.75" y="-39.5" />
+      <point x="0.0" y="64.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="302.5" y="239.0" />
+  <SelectedNodes>
+    <node>78d7f72c-2319-44fb-9c9a-f969dacf33f2.table:test_symfony.public.migration_versions</node>
+  </SelectedNodes>
+  <Categories>
+    <Category>Key columns</Category>
+    <Category>Columns</Category>
+  </Categories>
+</Diagram>
+

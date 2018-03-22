@@ -1,0 +1,34 @@
+AppBundle\Entity\Patient:
+    type: entity
+    table: patient
+    repositoryClass: AppBundle\Repository\PatientRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        identifiant:
+            type: string
+            length: '64'
+            unique: true
+        nom:
+            type: string
+            length: '64'
+        prenom:
+            type: string
+            length: '64'
+        dateNaissance:
+            type: datetime
+        genre:
+            type: string
+            length: '1'
+    manyToMany:
+        medecines:
+            targetEntity: AppBundle\Entity\Medecin
+            mappedBy: patientes
+    oneToMany:
+        adresses:
+            targetEntity: AppBundle\Entity\Adresse
+            mappedBy: patient

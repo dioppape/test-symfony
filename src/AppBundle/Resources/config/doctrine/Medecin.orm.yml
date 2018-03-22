@@ -1,0 +1,26 @@
+AppBundle\Entity\Medecin:
+    type: entity
+    table: medecin
+    repositoryClass: AppBundle\Repository\MedecinRepository
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        nom:
+            type: string
+            length: '64'
+        prenom:
+            type: string
+            length: '64'
+        rpps:
+            type: string
+            length: '64'
+            unique: true
+    manyToMany:
+        patientes:
+            targetEntity: AppBundle\Entity\Patient
+            inversedBy: medecines
+            cascade: ["persist"]

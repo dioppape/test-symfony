@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <div id="welcome">
+                <h1>Liste des patients</h1>
+            </div>
+            <table class="table table-dark">
+                <thead>
+                <tr>
+                    <th scope="col">Identifiant</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                    <th scope="col">Genre</th>
+                    <th scope="col">Date de naissance</th>
+                    <th scope="col">Adresse</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for patient in patients %}
+                    {% set genre =  'Masculin'%}
+                    {% if patient.genre == 'F' %}
+                        {% set genre =  'Féminin'%}
+                    {% endif %}
+                <tr>
+                    <th scope="row"><a href="{{ path('medecins_du_patient', {'identifiant' : patient.identifiant}) }}">{{ patient.identifiant }}</a></th>
+                    <td>{{ patient.nom }}</td>
+                    <td> {{ patient.prenom }}</td>
+                    <td> {{ genre }}</td>
+                    <td> {{ patient.dateNaissance | date("m/d/Y")  }}</td>
+
+                    <td> {% set adresses = ''%}
+                        {% for adresse in patient.adresses %}
+                            {% set adresses = adresse.rue ~','~ adresse.codePostal ~' '~ adresse.ville %}
+
+                            {% if not loop.first %}
+                              /
+                            {% endif %}
+                            {{ adresses }}
+                        {% endfor %}
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}

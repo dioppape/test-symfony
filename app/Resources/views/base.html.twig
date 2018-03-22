@@ -2,12 +2,33 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
+        <title>{% block title %}Test symfony!{% endblock %}</title>
+        {% block stylesheets %}
+            <style>
+                .container {
+                    color: #000;
+                    background-color: #f1f4f9;
+                    border-color: rgba(0,0,0,0.2);
+                    margin-top: 80px;
+                }
+            </style>
+        {% endblock %}
+        <link rel="stylesheet" href="{{ asset('bundles/app/bootstrap/css/bootstrap.min.css') }}" />
+        <script src="{{ asset('bundles/app/bootstrap/css/js/bootstrap.min.js') }}"></script>
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
     <body>
+    <div class="nav">
+        <nav class="navbar navbar-fixed-top">
+            <menu class="header">
+                <a class="btn btn-default"  href="{{ path('medecins') }}">Médecins</a>
+                <a class="btn btn-default" href="{{ path('patients') }}">Patients</a>
+            </menu>
+        </nav>
+    </div>
+    <div class="container">
         {% block body %}{% endblock %}
         {% block javascripts %}{% endblock %}
+    </div>
     </body>
 </html>

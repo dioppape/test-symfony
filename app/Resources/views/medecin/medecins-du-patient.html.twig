@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div id="wrapper">
+        <div id="container">
+            <div id="welcome">
+                <h1>Liste des médecins de M {{ patient.nom }}</h1>
+            </div>
+            <table class="table table-dark">
+                <thead>
+                <tr>
+                    <th scope="col">Rpps</th>
+                    <th scope="col">Nom</th>
+                    <th scope="col">Prénom</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for medecin in medecins %}
+                    <tr>
+                        <th scope="row"><a href="{{ path('patients_du_medecin', {'rpps' : medecin.rpps}) }}">{{ medecin.rpps }}</a></th>
+                        <td>{{ medecin.nom }}</td>
+                        <td> {{ medecin.prenom }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
